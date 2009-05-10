@@ -72,3 +72,26 @@ def test_write_decimal():
     output_next()
 
 test_write_decimal()
+
+
+# Input from decimal
+
+def read_decimal(width):
+    """Return the value of an unsigned decimal integer field, 0-padded
+    starting from the current position rightwards for the given
+    width."""
+    u = 0
+    for i in range(width):
+        ones = ord(input_read()) - ord('0')
+        input_move(+1)
+        assert 0 <= ones <= 9
+        u = u * 10 + ones
+    return u
+
+def test_read_decimal():
+    line = '031416'
+    line = (line + ' '*line_width)[:line_width]
+    input_line[:] = list(line)
+    print read_decimal(6)
+
+test_read_decimal()
